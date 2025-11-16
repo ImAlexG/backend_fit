@@ -61,9 +61,13 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     
+    "http://18.217.170.244:5173",
+    "http://18.217.170.244:5174",
+    "http://18.217.170.244:5175",
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:5175",
+    
 
 
 ]
@@ -91,7 +95,10 @@ WSGI_APPLICATION = 'fit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-ALLOWED_HOSTS = ['18.217.170.244']
+ALLOWED_HOSTS = [
+    #'18.217.170.244'
+    "*"
+    ]
 
 
 DATABASES = {
