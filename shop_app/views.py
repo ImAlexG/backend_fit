@@ -4,6 +4,7 @@ from .models import Product, CartItem, Cart
 from .serializers import ProductSerializer, DetailedProductSerializer, CartItemSerializer, SimpleCartSerializer, CartSerializer
 from rest_framework.response import Response
 from django.conf import settings
+from rest_framework import status
 
 
 
@@ -78,5 +79,14 @@ def update_quantity(request):
 
     except Exception as e:
         return Response({'error': str(e)}, status=400)
+    
+
+@api_view(['DELETE'])
+def delete_cartitem(request):
+    cartitem_id = request.data.get("item_id")
+    cartitem = CartItem.objects.get(id=cartitem_id)
+    cartitem.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
