@@ -81,12 +81,12 @@ def update_quantity(request):
         return Response({'error': str(e)}, status=400)
     
 
-@api_view(['DELETE'])
+@api_view(['POST'])
 def delete_cartitem(request):
     cartitem_id = request.data.get("item_id")
     cartitem = CartItem.objects.get(id=cartitem_id)
     cartitem.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
+    return Response({"message:" : "Producto eliminado del carrito con exito"},status=status.HTTP_204_NO_CONTENT)
 
 
 
