@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from .models import Product, CartItem, Cart
-from .serializers import ProductSerializer, DetailedProductSerializer, CartItemSerializer, SimpleCartSerializer, CartSerializer
+from .serializers import ProductSerializer, UserSerializer, DetailedProductSerializer, CartItemSerializer, SimpleCartSerializer, CartSerializer
 from rest_framework.response import Response
 from django.conf import settings
 from rest_framework import status
@@ -96,5 +96,13 @@ def get_username(request):
     user = request.user
     return Response({'username': user.username} )
 
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def user_info(request):
+    user = request.user
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+    
 
 
