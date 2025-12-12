@@ -174,3 +174,6 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),}
+
+
+FLUTTERWAVE_SECRET_KEY = "yogMJNN1wM71rfiumv0vk8f91uXA5idh"
